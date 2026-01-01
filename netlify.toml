@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+# Use the official Netlify Next.js plugin to support Next features (app dir, SSR, image optimization, etc.)
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Optional: adjust edge and functions settings if needed
+# [functions]
+#   directory = "netlify/functions"

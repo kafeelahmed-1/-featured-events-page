@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Menu, X } from "lucide-react"
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navLinks = [
     { name: "Home", href: "#" },
@@ -13,39 +14,50 @@ export function Navbar() {
     { name: "Contact", href: "#contact" },
   ]
 
-  return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
-      <div className="container mx-auto px-6">
-        <div className="flex h-20 items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-lg font-bold tracking-tighter uppercase">EventDiscovery</span>
-            <div className="bg-white text-black text-[10px] font-bold px-1 rounded uppercase">26</div>
-          </div>
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 48)
+    handleScroll()
+    window.addEventListener("scroll", handleScroll, { passive: true })
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
 
-          {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+  return (
+    <nav className={`fixed z-50 transition-all duration-500 ${isScrolled ? 'top-6 left-6 right-6 rounded-2xl bg-white/6 border border-white/10 backdrop-blur-xl shadow-2xl' : 'top-0 left-0 right-0 bg-transparent'}`}>
+      <div className={`mx-auto ${isScrolled ? 'max-w-[1200px]' : ''}`}>
+        <div className={`flex items-center justify-between px-6 transition-all duration-300 ${isScrolled ? 'py-3' : 'h-20 py-6'}`}>
+          {/* Desktop Nav - slides to left when scrolled */}
+          <div className={`hidden md:flex items-center gap-6 transition-all duration-500 ${isScrolled ? 'order-1 ml-0 -translate-x-2 opacity-100' : 'order-3 ml-auto translate-x-0 opacity-90'}`}>
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-xs font-medium uppercase tracking-widest hover:text-white/60 transition-colors"
+                className="text-sm font-medium uppercase tracking-[0.35em] text-white/80 hover:text-white transition-colors"
               >
                 {link.name}
               </Link>
             ))}
             <Link
               href="#"
-              className="text-xs font-medium uppercase tracking-widest hover:text-white/60 transition-colors"
+              className="text-sm font-medium uppercase tracking-[0.35em] text-white/80 hover:text-white transition-colors"
             >
               Log In
             </Link>
-            <button className="bg-white text-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest hover:bg-white/90 transition-all">
-              Sign Up
-            </button>
+          </div>
+
+          {/* Brand - moves to right when scrolled */}
+          <div className={`flex items-center gap-3 transition-all duration-500 ${isScrolled ? 'order-3 ml-auto text-right' : 'order-1'}`}>
+            <div className="flex flex-col leading-tight">
+              <span className={`font-bold tracking-tighter uppercase transition-all duration-300 ${isScrolled ? 'text-sm text-white/90' : 'text-lg text-white'}`}>EventDiscovery</span>
+              <span className={`text-[10px] font-mono tracking-widest text-muted-foreground transition-opacity duration-300 ${isScrolled ? 'opacity-0' : 'opacity-80'}`}>Curated Events</span>
+            </div>
           </div>
 
           {/* Mobile Toggle */}
-          <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className={`md:hidden transition-all duration-500 ${isScrolled ? 'order-1 p-2 bg-white/5 rounded-md -translate-x-1 text-white' : 'order-4 p-2 text-white'}`}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
             {isOpen ? <X /> : <Menu />}
           </button>
         </div>
@@ -59,9 +71,6 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <button className="w-full bg-white text-black py-4 text-xs font-bold uppercase tracking-widest">
-            Sign Up
-          </button>
         </div>
       )}
     </nav>

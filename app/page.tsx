@@ -4,7 +4,6 @@ import { EventsGrid } from "@/components/events-grid"
 import { Contact } from "@/components/contact"
 
 export default function FeaturedEventsPage() {
-  console.log("[v0] FeaturedEventsPage: Rendering started")
 
   return (
     // reinforced styles with inline hex codes for reliability in preview
