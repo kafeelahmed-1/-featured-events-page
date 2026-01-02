@@ -1,27 +1,30 @@
-# Featured Events Page
+# Event Discovery
 
-*Automatically synced with your deployments.*
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/kafeelahmed-1s-projects/featured-events-page)
+**Live Demo:** [https://featuredeventspk.netlify.app](https://featuredeventspk.netlify.app)
 
 ## Overview
+Event Discovery is a modern web application built with **Next.js** that allows users to explore and discover events happening around them. The project focuses on a clean, responsive design and smooth user experience, making it easy for users to browse events, view details, and stay updated on featured happenings.
 
-This repository will stay in sync with your deployed chats.
-Any changes you make to your deployed app will be automatically pushed to this repository.
+## Technologies & Tools
+- **Next.js** – React framework for server-side rendering and fast builds  
+- **React & TypeScript** – Front-end library with type safety  
+- **Tailwind CSS** – Utility-first CSS framework for responsive and modern UI  
+- **PostCSS** – CSS optimization and transformations  
+- **Google Fonts** – Custom fonts for typography (Plus Jakarta Sans & DM Sans)  
+- **Netlify** – Deployment platform for seamless hosting  
 
-## Deployment
+## Features
+- Browse and explore featured events in different categories  
+- Responsive design for desktop and mobile  
+- Clean UI with modern styling using Tailwind CSS  
+- Optimized build for fast performance and smooth experience  
 
-Your project is live at:
-
-**[Project on Vercel](https://vercel.com/kafeelahmed-1s-projects/featured-events-page)**
-
-## Build your app
-
-Continue building your app on your project dashboard.
-
-## How It Works
-
-1. Create and modify your project using your project dashboard
-2. Deploy your chats from the project interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## Getting Started
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-link>
+   cd event-discovery
+2. **Install Dependencies:**
+   npm install
+   3. **Run App:**
+      npm run dev
