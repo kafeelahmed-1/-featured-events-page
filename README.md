@@ -24,7 +24,7 @@ Event Discovery is a modern web application built with **Next.js** that allows u
    ```bash
    git clone <your-repo-link>
    cd event-discovery
-2. **Install Dependencies:**
+2. **Install Dependencies & Run App:**
+```bash 
    npm install
-   3. **Run App:**
-      npm run dev
+   npm run dev
