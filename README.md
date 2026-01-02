@@ -22,7 +22,7 @@ Event Discovery is a modern web application built with **Next.js** that allows u
 ## Getting Started
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-link>
+   git clone <https://github.com/kafeelahmed-1/-featured-events-page>
    cd event-discovery
 2. **Install Dependencies & Run App:**
 ```bash 
